@@ -9,11 +9,8 @@ before_install:
    - tar -xvf $PWD/phantomjs-2.1-linux-x86_64.tar.bz2 -C $PWD/travis-phantomjs21 --strip-components 2 phantomjs-2.1.1-linux-x86_64/bin/phantomjs
    - chmod +x $PWD/travis-phantomjs21/phantomjs
 rvm:
-  - 2.3.0
-  - 2.2.2
-  - 2.1.6
-  - 2.0.0
-  - rbx-2
+  - 2.3.1
+  - 2.2.5
 gemfile:
   - Gemfile
 env:
@@ -23,19 +20,25 @@ env:
 matrix:
   include:
     - rvm: 1.9.3
-      gemfile: gemfiles/Gemfile.1_9_3
+      gemfile: gemfiles/Gemfile.legacy
     - rvm: jruby-19mode
-      gemfile: gemfiles/Gemfile.1_9_3
-    - rvm: 2.2.2
+      gemfile: gemfiles/Gemfile.legacy
+    - rvm: 2.1.9
+      gemfile: gemfiles/Gemfile.legacy
+    - rvm: 2.0.0
+      gemfile: gemfiles/Gemfile.legacy
+    - rvm: rbx-3.29
+      gemfile: gemfiles/Gemfile.legacy
+    - rvm: 2.2.5
       gemfile: Gemfile
       env: PHANTOMJS=$PWD/travis-phantomjs2/phantomjs
-    - rvm: 2.2.2
+    - rvm: 2.2.5
       gemfile: Gemfile
       env: PHANTOMJS=$PWD/travis-phantomjs21/phantomjs
-    - rvm: 2.2.2
+    - rvm: 2.2.5
       gemfile: gemfiles/Gemfile.capybara_master
       env: PHANTOMJS=$PWD/travis-phantomjs2/phantomjs
-    - rvm: 2.2.2
+    - rvm: 2.2.5
       gemfile: gemfiles/Gemfile.capybara_master
       env: PHANTOMJS=$PWD/travis-phantomjs21/phantomjs
   allow_failures:
